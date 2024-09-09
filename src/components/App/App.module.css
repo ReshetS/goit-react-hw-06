@@ -1,0 +1,12 @@
+.header {
+  font-weight: 700;
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.noContactsMessage {
+  text-align: center;
+  font-size: 24px;
+  color: #ff0000;
+}
