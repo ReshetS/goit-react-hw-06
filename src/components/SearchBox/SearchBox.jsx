@@ -1,9 +1,18 @@
 import { useId } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useDispatch, useSelector } from "react-redux";
+import { selectNameFilter, changeFilter } from "../../redux/filtersSlice";
 import style from "./SearchBox.module.css";
 
-export default function SearchBox({ query, onSearch }) {
+export default function SearchBox() {
   const id = useId();
+  const dispatch = useDispatch();
+  const query = useSelector(selectNameFilter);
+
+  function handleSearch(query) {
+    dispatch(changeFilter(query));
+  }
+
   return (
     <div className={style.search}>
       <label htmlFor={id} className={style.searchLabel}>
@@ -19,7 +28,7 @@ export default function SearchBox({ query, onSearch }) {
           id={id}
           className={style.searchInput}
           value={query}
-          onChange={(e) => onSearch(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </div>
     </div>
